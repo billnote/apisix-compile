@@ -5,6 +5,9 @@ ARG iteration="0"
 
 FROM ${image_base}:${image_tag}
 
+ARG apisix_tag
+ARG iteration
+
 RUN set -x \
     # install dependency
     && yum -y install wget tar gcc automake autoconf libtool make curl git which unzip \
