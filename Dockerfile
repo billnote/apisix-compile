@@ -12,7 +12,7 @@ RUN set -x \
     && rpm -ivh epel-release-latest-7.noarch.rpm \
     && yum install -y yum-utils readline-dev readline-devel \
     # install lua5.1 for compatible with openresty 1.17.8.2
-    && cd /tmp/
+    && cd /tmp/ \
     && wget http://www.lua.org/ftp/lua-5.1.4.tar.gz \
     && tar -zxvf lua-5.1.4.tar.gz \
     && cd lua-5.1.4/ \
@@ -34,5 +34,5 @@ RUN set -x \
     && luarocks config variables.OPENSSL_LIBDIR /usr/local/openresty/openssl111/lib \
     && luarocks config variables.OPENSSL_INCDIR /usr/local/openresty/openssl111/include \
     # install apisix deps
-    && wget https://raw.githubusercontent.com/apache/apisix/master/rockspec/apisix-${apisix_tag}-${iteration}.rockspec
+    && wget https://raw.githubusercontent.com/apache/apisix/master/rockspec/apisix-${apisix_tag}-${iteration}.rockspec \
     && luarocks install apisix-${apisix_tag}-${iteration}.rockspec  --tree=/tmp/build/output/apisix/usr/local/apisix/deps --local --only-deps
